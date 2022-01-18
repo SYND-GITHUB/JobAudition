@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="margin_edge">40dp</dimen>
+    <dimen name="margin_large">20dp</dimen>
+    <dimen name="margin_medium">10dp</dimen>
+    <dimen name="margin_small">5dp</dimen>
+    <dimen name="padding_medium">10dp</dimen>
+    <dimen name="padding_small">5dp</dimen>
+    <dimen name="min_height_input_field">40dp</dimen>
+    <dimen name="max_height_input_field">80dp</dimen>
+</resources>

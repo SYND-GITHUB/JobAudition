@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_format_input"
+        android:checkable="true"
+        android:checked="true"
+        android:contentDescription="@string/settings"
+        android:title="@string/format_input"
+        app:showAsAction="never"></item>
+</menu>
