@@ -9,4 +9,4 @@ Other features:
 - Format input string.
 - Click link to open web page.
 
-Using Java, MVVM, Data Binding, JUnit + Mockito
+Using Java, MVVM, Live Data, Data Binding, JUnit + Mockito
