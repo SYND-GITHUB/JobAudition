@@ -1,16 +1,10 @@
 package com.synd.jobaudition;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.mock;
 
 import android.content.Context;
-import android.os.Handler;
 import android.util.Log;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
 
-import androidx.annotation.UiThread;
-import androidx.test.core.app.ApplicationProvider;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.platform.app.InstrumentationRegistry;
 
@@ -38,29 +32,17 @@ public class ExampleInstrumentedTest {
 
     @Test
     public void test_showOutput() {
-        Log.d(TAG, "" + StringUtils.getOutput("@synd is opening https://olympics.com/tokyo-2020/en/"));
-        Log.d(TAG, "" + StringUtils.getOutput("@synd is calling @candy"));
-        Log.d(TAG, "" + StringUtils.getOutput("https://olympics.com/tokyo-2020/en/ and http://tinhte.vn"));
-        Log.d(TAG, "" + StringUtils.getOutput("test"));
-        Log.d(TAG, "" + StringUtils.getOutput("@@@"));
-        Log.d(TAG, "" + StringUtils.getOutput("httphttps"));
+        Log.d(TAG, "Output 1: " + StringUtils.getOutput("@synd is opening https://olympics.com/tokyo-2020/en/"));
+        Log.d(TAG, "Output 2: " + StringUtils.getOutput("@synd is calling @candy"));
+        Log.d(TAG, "Output 3: " + StringUtils.getOutput("https://olympics.com/tokyo-2020/en/ and http://tinhte.vn"));
+        Log.d(TAG, "Output 4: " + StringUtils.getOutput("test"));
+        Log.d(TAG, "Output 5: " + StringUtils.getOutput("@@@"));
+        Log.d(TAG, "Output 6: " + StringUtils.getOutput("httphttps"));
     }
 
     @Test
-    @UiThread
     public void test_getWebPageTitle() {
-        Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        new Handler(appContext.getMainLooper()).post(new Runnable() {
-            @Override
-            public void run() {
-                WebView webView = new WebView(ApplicationProvider.getApplicationContext());
-                webView.getSettings().setJavaScriptEnabled(true);
-                WebViewClient mockWebViewClient = mock(WebViewClient.class);
-                webView.setWebViewClient(mockWebViewClient);
-                String url = "https://olympics.com/tokyo-2020/en/";
-
-                webView.loadUrl(url);
-            }
-        });
+        new Thread(() -> Log.d(TAG, "Title 1: " + StringUtils.jsoupParseHtmlTitle("https://olympics.com/tokyo-2020/en/"))).start();
+        new Thread(() -> Log.d(TAG, "Title 2: " + StringUtils.jsoupParseHtmlTitle("http://"))).start();
     }
 }

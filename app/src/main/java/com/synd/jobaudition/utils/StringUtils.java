@@ -4,11 +4,14 @@ import android.graphics.Typeface;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.StyleSpan;
+import android.util.Log;
 import android.util.Patterns;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
 
 import java.util.List;
 import java.util.Map;
@@ -19,6 +22,7 @@ public class StringUtils {
 
     /**
      * Convert input string to Json
+     *
      * @param input
      * @return
      */
@@ -55,6 +59,7 @@ public class StringUtils {
 
     /**
      * Convert raw data to Json
+     *
      * @param mentions
      * @param linkMap
      * @return
@@ -92,6 +97,7 @@ public class StringUtils {
 
     /**
      * Format Input by mentions
+     *
      * @param input
      * @param mentions
      * @return
@@ -109,5 +115,25 @@ public class StringUtils {
 //            spannableString.setSpan(new UnderlineSpan(), start, start + s.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 //        }
         return spannableString;
+    }
+
+    /**
+     * Parse Html title by Jsoup
+     *
+     * @param url
+     * @return
+     */
+    public static String jsoupParseHtmlTitle(String url) {
+        try {
+            Document document = Jsoup.connect(url)
+                    .userAgent("Chrome")
+                    .timeout(60000)
+                    .ignoreHttpErrors(true)
+                    .get();
+            return document.title();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

@@ -34,7 +34,6 @@ public class IOFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         viewModel = new ViewModelProvider(requireActivity()).get(IOViewModel.class);
-        viewModel.setApplication(requireActivity().getApplication());
 
         binding.setLifecycleOwner(requireActivity());
         binding.btnSend.setOnClickListener(v -> {
